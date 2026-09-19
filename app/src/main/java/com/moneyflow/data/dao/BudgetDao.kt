@@ -1,11 +1,11 @@
-package com.moneyflow.data.dao
+package com.tropico.moneyflow.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.moneyflow.data.entity.CategoryBudgetEntity
-import com.moneyflow.data.entity.MonthlyBudgetEntity
+import com.tropico.moneyflow.data.entity.CategoryBudgetEntity
+import com.tropico.moneyflow.data.entity.MonthlyBudgetEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
