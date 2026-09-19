@@ -1,15 +1,15 @@
-package com.moneyflow.viewmodel
+package com.tropico.moneyflow.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moneyflow.data.preferences.AppPreferences
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
-import com.moneyflow.domain.ExpenseAnalytics
-import com.moneyflow.model.DashboardSummary
-import com.moneyflow.model.Expense
-import com.moneyflow.model.MonthlyBudget
-import com.moneyflow.util.DateUtils
+import com.tropico.moneyflow.data.preferences.AppPreferences
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.domain.ExpenseAnalytics
+import com.tropico.moneyflow.model.DashboardSummary
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.MonthlyBudget
+import com.tropico.moneyflow.util.DateUtils
 import java.time.LocalDate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
