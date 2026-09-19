@@ -298,6 +298,7 @@ fun DonutChart(data: List<Pair<ExpenseCategory, Long>>, modifier: Modifier = Mod
 @Composable
 fun TrendLineChart(data: List<Pair<LocalDate, Long>>, modifier: Modifier = Modifier) {
     val max = (data.maxOfOrNull { it.second } ?: 1L).toFloat().coerceAtLeast(1f)
+    val lineColor = MaterialTheme.colorScheme.primary
     Card(modifier = modifier.fillMaxWidth(), shape = RoundedCornerShape(20.dp)) {
         Column(Modifier.padding(16.dp)) {
             Text("Spending trend", style = MaterialTheme.typography.titleMedium)
@@ -312,7 +313,7 @@ fun TrendLineChart(data: List<Pair<LocalDate, Long>>, modifier: Modifier = Modif
                     val y1 = size.height - ((current.second / max) * size.height)
                     val x2 = (index + 1) * step
                     val y2 = size.height - ((next.second / max) * size.height)
-                    drawLine(MaterialTheme.colorScheme.primary, Offset(x1, y1), Offset(x2, y2), strokeWidth = 6f)
+                    drawLine(lineColor, Offset(x1, y1), Offset(x2, y2), strokeWidth = 6f)
                 }
             }
         }
