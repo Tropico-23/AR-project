@@ -1,8 +1,8 @@
-package com.moneyflow.domain
+package com.tropico.moneyflow.domain
 
-import com.moneyflow.model.Expense
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.model.PaymentMethod
 import java.time.LocalDate
 import java.time.LocalDateTime
 import org.junit.Assert.assertEquals
