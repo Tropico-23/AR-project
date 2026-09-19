@@ -1,16 +1,16 @@
-package com.moneyflow.viewmodel
+package com.tropico.moneyflow.viewmodel
 
 import android.content.ContentResolver
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moneyflow.data.preferences.AppPreferences
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
-import com.moneyflow.model.AppCurrency
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.model.ThemeMode
-import com.moneyflow.model.WeekStart
+import com.tropico.moneyflow.data.preferences.AppPreferences
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.model.AppCurrency
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.ThemeMode
+import com.tropico.moneyflow.model.WeekStart
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -62,7 +62,7 @@ class SettingsViewModel(
         }
     }
 
-    fun exportCsv(uri: Uri, resolver: ContentResolver, expenses: List<com.moneyflow.model.Expense>) {
+    fun exportCsv(uri: Uri, resolver: ContentResolver, expenses: List<com.tropico.moneyflow.model.Expense>) {
         viewModelScope.launch {
             runCatching {
                 resolver.openOutputStream(uri)?.use { repository.exportExpensesToCsv(expenses, it) }
