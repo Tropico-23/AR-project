@@ -1,9 +1,9 @@
-package com.moneyflow.viewmodel
+package com.tropico.moneyflow.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
 
 class ViewModelFactory(
     private val repository: ExpenseRepository,
