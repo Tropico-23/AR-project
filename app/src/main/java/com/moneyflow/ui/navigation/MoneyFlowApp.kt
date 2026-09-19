@@ -1,4 +1,4 @@
-package com.moneyflow.ui.navigation
+package com.tropico.moneyflow.ui.navigation
 
 import android.app.Activity
 import androidx.compose.animation.AnimatedContent
@@ -38,20 +38,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.moneyflow.MoneyFlowApplication
-import com.moneyflow.ui.components.AddExpenseSheet
-import com.moneyflow.ui.components.ConfirmDeleteDialog
-import com.moneyflow.ui.screens.BudgetScreen
-import com.moneyflow.ui.screens.HomeScreen
-import com.moneyflow.ui.screens.InsightsScreen
-import com.moneyflow.ui.screens.SettingsScreen
-import com.moneyflow.ui.screens.TransactionsScreen
-import com.moneyflow.viewmodel.BudgetViewModel
-import com.moneyflow.viewmodel.HomeViewModel
-import com.moneyflow.viewmodel.InsightsViewModel
-import com.moneyflow.viewmodel.SettingsViewModel
-import com.moneyflow.viewmodel.TransactionsViewModel
-import com.moneyflow.viewmodel.ViewModelFactory
+import com.tropico.moneyflow.MoneyFlowApplication
+import com.tropico.moneyflow.ui.components.AddExpenseSheet
+import com.tropico.moneyflow.ui.components.ConfirmDeleteDialog
+import com.tropico.moneyflow.ui.screens.BudgetScreen
+import com.tropico.moneyflow.ui.screens.HomeScreen
+import com.tropico.moneyflow.ui.screens.InsightsScreen
+import com.tropico.moneyflow.ui.screens.SettingsScreen
+import com.tropico.moneyflow.ui.screens.TransactionsScreen
+import com.tropico.moneyflow.viewmodel.BudgetViewModel
+import com.tropico.moneyflow.viewmodel.HomeViewModel
+import com.tropico.moneyflow.viewmodel.InsightsViewModel
+import com.tropico.moneyflow.viewmodel.SettingsViewModel
+import com.tropico.moneyflow.viewmodel.TransactionsViewModel
+import com.tropico.moneyflow.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,8 +77,8 @@ fun MoneyFlowApp() {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var showAddSheet by remember { mutableStateOf(false) }
-    var editExpense by remember { mutableStateOf<com.moneyflow.model.Expense?>(null) }
-    var pendingDelete by remember { mutableStateOf<com.moneyflow.model.Expense?>(null) }
+    var editExpense by remember { mutableStateOf<com.tropico.moneyflow.model.Expense?>(null) }
+    var pendingDelete by remember { mutableStateOf<com.tropico.moneyflow.model.Expense?>(null) }
 
     val bottomItems = listOf(NavRoutes.Home, NavRoutes.Transactions, NavRoutes.Insights, NavRoutes.Budget)
     val icons = mapOf(
@@ -194,30 +194,30 @@ fun MoneyFlowApp() {
 private fun AppNavHost(
     navController: androidx.navigation.NavHostController,
     paddingValues: PaddingValues,
-    homeState: com.moneyflow.viewmodel.HomeUiState,
-    txState: com.moneyflow.viewmodel.TransactionsUiState,
-    insightsState: com.moneyflow.viewmodel.InsightsUiState,
-    budgetState: com.moneyflow.viewmodel.BudgetUiState,
-    settingsState: com.moneyflow.viewmodel.SettingsUiState,
+    homeState: com.tropico.moneyflow.viewmodel.HomeUiState,
+    txState: com.tropico.moneyflow.viewmodel.TransactionsUiState,
+    insightsState: com.tropico.moneyflow.viewmodel.InsightsUiState,
+    budgetState: com.tropico.moneyflow.viewmodel.BudgetUiState,
+    settingsState: com.tropico.moneyflow.viewmodel.SettingsUiState,
     onNavigateToTransactions: () -> Unit,
     onTxQuery: (String) -> Unit,
-    onTxCategory: (com.moneyflow.model.ExpenseCategory?) -> Unit,
-    onTxPayment: (com.moneyflow.model.PaymentMethod?) -> Unit,
-    onTxSort: (com.moneyflow.model.SortOrder) -> Unit,
-    onTxSelect: (com.moneyflow.model.Expense?) -> Unit,
-    onTxDelete: (com.moneyflow.model.Expense) -> Unit,
-    onTxEditSave: (com.moneyflow.model.Expense) -> Unit,
-    onStartEdit: (com.moneyflow.model.Expense) -> Unit,
-    onRangeChanged: (com.moneyflow.model.TrendRange) -> Unit,
+    onTxCategory: (com.tropico.moneyflow.model.ExpenseCategory?) -> Unit,
+    onTxPayment: (com.tropico.moneyflow.model.PaymentMethod?) -> Unit,
+    onTxSort: (com.tropico.moneyflow.model.SortOrder) -> Unit,
+    onTxSelect: (com.tropico.moneyflow.model.Expense?) -> Unit,
+    onTxDelete: (com.tropico.moneyflow.model.Expense) -> Unit,
+    onTxEditSave: (com.tropico.moneyflow.model.Expense) -> Unit,
+    onStartEdit: (com.tropico.moneyflow.model.Expense) -> Unit,
+    onRangeChanged: (com.tropico.moneyflow.model.TrendRange) -> Unit,
     onSetMonthlyBudget: (Long) -> Unit,
-    onSetCategoryBudget: (com.moneyflow.model.ExpenseCategory, Long) -> Unit,
-    onThemeChanged: (com.moneyflow.model.ThemeMode) -> Unit,
-    onCurrencyChanged: (com.moneyflow.model.AppCurrency) -> Unit,
-    onDefaultPayment: (com.moneyflow.model.PaymentMethod) -> Unit,
-    onWeekStartChanged: (com.moneyflow.model.WeekStart) -> Unit,
+    onSetCategoryBudget: (com.tropico.moneyflow.model.ExpenseCategory, Long) -> Unit,
+    onThemeChanged: (com.tropico.moneyflow.model.ThemeMode) -> Unit,
+    onCurrencyChanged: (com.tropico.moneyflow.model.AppCurrency) -> Unit,
+    onDefaultPayment: (com.tropico.moneyflow.model.PaymentMethod) -> Unit,
+    onWeekStartChanged: (com.tropico.moneyflow.model.WeekStart) -> Unit,
     onClearData: () -> Unit,
     onInsertDemoData: () -> Unit,
-    onExportCsv: (android.net.Uri, android.content.ContentResolver, List<com.moneyflow.model.Expense>) -> Unit,
+    onExportCsv: (android.net.Uri, android.content.ContentResolver, List<com.tropico.moneyflow.model.Expense>) -> Unit,
     onImportCsv: (android.net.Uri, android.content.ContentResolver) -> Unit,
     contentResolver: android.content.ContentResolver
 ) {
