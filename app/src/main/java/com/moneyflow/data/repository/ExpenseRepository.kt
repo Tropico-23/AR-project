@@ -18,8 +18,12 @@ import java.io.OutputStream
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
+import kotlin.math.roundToLong
 import java.time.LocalTime
 import java.time.ZoneId
+import android.content.Context
+import androidx.room.withTransaction
+import org.json.JSONArray
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -28,6 +32,43 @@ class ExpenseRepository(
     private val budgetDao: BudgetDao
 ) {
     fun observeAllExpenses(): Flow<List<Expense>> = expenseDao.observeAll().map { it.map(ExpenseEntity::toModel) }
+
+    suspend fun migrateLegacySharedPreferences(context: Context) {
+        val db = expenseDao.javaClass // migration is idempotent through the marker below
+        val prefs = context.getSharedPreferences("moneyflow", Context.MODE_PRIVATE)
+        if (prefs.getBoolean("room_legacy_migration_done", false)) return
+
+        val raw = prefs.getString("expenses", "[]").orEmpty()
+        val array = runCatching { JSONArray(raw) }.getOrElse { JSONArray() }
+        for (i in 0 until array.length()) {
+            val item = array.getJSONObject(i)
+            val id = item.optLong("id", 0L)
+            val amount = item.optDouble("amount", 0.0)
+            if (id == 0L || !amount.isFinite() || amount <= 0.0) continue
+            val date = runCatching { LocalDate.parse(item.optString("date")) }.getOrElse { LocalDate.now() }
+            val expense = Expense(
+                id = id,
+                amountMinor = (amount * 100.0).roundToLong(),
+                title = item.optString("title"),
+                category = ExpenseCategory.fromValue(item.optString("category", "Other")),
+                date = date,
+                time = null,
+                note = item.optString("note").ifBlank { null },
+                paymentMethod = PaymentMethod.fromValue(item.optString("payment", "Cash")),
+                createdAt = LocalDateTime.now()
+            )
+            expenseDao.insert(expense.toEntity())
+        }
+
+        val budget = prefs.getFloat("budget", 500f).toDouble()
+        budgetDao.upsertMonthlyBudget(
+            MonthlyBudgetEntity(
+                DateUtils.monthKey(LocalDate.now()),
+                (budget * 100.0).roundToLong().coerceAtLeast(0L)
+            )
+        )
+        prefs.edit().putBoolean("room_legacy_migration_done", true).apply()
+    }
 
     fun observeRecentExpenses(limit: Int = 5): Flow<List<Expense>> =
         expenseDao.observeRecent(limit).map { entities -> entities.map(ExpenseEntity::toModel) }
