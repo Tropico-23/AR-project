@@ -1,4 +1,4 @@
-package com.moneyflow.ui.screens
+package com.tropico.moneyflow.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,10 +21,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.ui.components.BudgetProgressCard
-import com.moneyflow.util.MoneyFormat
-import com.moneyflow.viewmodel.BudgetUiState
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.ui.components.BudgetProgressCard
+import com.tropico.moneyflow.util.MoneyFormat
+import com.tropico.moneyflow.viewmodel.BudgetUiState
 
 @Composable
 fun BudgetScreen(
@@ -100,7 +100,7 @@ private fun BudgetInputDialog(onDismiss: () -> Unit, onSave: (Long) -> Unit) {
         },
         confirmButton = {
             TextButton(onClick = {
-                val minor = com.moneyflow.util.MoneyFormat.parseMajorToMinor(value)
+                val minor = com.tropico.moneyflow.util.MoneyFormat.parseMajorToMinor(value)
                 if (minor == null || minor < 0) error = "Invalid amount" else onSave(minor)
             }) { Text("Save") }
         },
