@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.moneyflow"
+    namespace = "com.tropico.moneyflow"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.moneyflow"
+        applicationId = "com.tropico.moneyflow"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
