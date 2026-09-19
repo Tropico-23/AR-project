@@ -1,14 +1,14 @@
-package com.moneyflow.data.preferences
+package com.tropico.moneyflow.data.preferences
 
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.moneyflow.model.AppCurrency
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.model.ThemeMode
-import com.moneyflow.model.WeekStart
+import com.tropico.moneyflow.model.AppCurrency
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.ThemeMode
+import com.tropico.moneyflow.model.WeekStart
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
