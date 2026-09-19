@@ -1,4 +1,4 @@
-package com.moneyflow
+package com.tropico.moneyflow
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,10 +7,10 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.moneyflow.ui.navigation.MoneyFlowApp
-import com.moneyflow.ui.theme.MoneyFlowTheme
-import com.moneyflow.viewmodel.SettingsViewModel
-import com.moneyflow.viewmodel.ViewModelFactory
+import com.tropico.moneyflow.ui.navigation.MoneyFlowApp
+import com.tropico.moneyflow.ui.theme.MoneyFlowTheme
+import com.tropico.moneyflow.viewmodel.SettingsViewModel
+import com.tropico.moneyflow.viewmodel.ViewModelFactory
 
 class MainActivity : ComponentActivity() {
     private val settingsViewModel: SettingsViewModel by viewModels {
