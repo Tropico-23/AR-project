@@ -72,7 +72,7 @@ fun HomeScreen(
         item {
             Text("Today’s Expenses", style = MaterialTheme.typography.titleLarge)
         }
-        Text("Today: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}", style = MaterialTheme.typography.headlineSmall)
+        item { Text("Today: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}", style = MaterialTheme.typography.headlineSmall) }
         if (state.todayExpenses.isEmpty()) {
             item {
                 Card(modifier = Modifier.fillMaxWidth()) {
