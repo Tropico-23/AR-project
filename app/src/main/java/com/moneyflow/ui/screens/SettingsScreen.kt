@@ -1,4 +1,4 @@
-package com.moneyflow.ui.screens
+package com.tropico.moneyflow.ui.screens
 
 import android.content.ContentResolver
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -29,12 +29,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moneyflow.model.AppCurrency
-import com.moneyflow.model.Expense
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.model.ThemeMode
-import com.moneyflow.model.WeekStart
-import com.moneyflow.viewmodel.SettingsUiState
+import com.tropico.moneyflow.model.AppCurrency
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.ThemeMode
+import com.tropico.moneyflow.model.WeekStart
+import com.tropico.moneyflow.viewmodel.SettingsUiState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
