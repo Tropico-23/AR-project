@@ -1,4 +1,4 @@
-package com.moneyflow.ui.theme
+package com.tropico.moneyflow.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
