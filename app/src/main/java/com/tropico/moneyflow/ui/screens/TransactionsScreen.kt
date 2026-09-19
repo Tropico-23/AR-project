@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -68,7 +69,7 @@ fun TransactionsScreen(
                 label = { Text("Sort") },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = sortExpanded) }
             )
-            ExposedDropdownMenu(expanded = sortExpanded, onDismissRequest = { sortExpanded = false }) {
+            DropdownMenu(expanded = sortExpanded, onDismissRequest = { sortExpanded = false }) {
                 SortOrder.entries.forEach {
                     DropdownMenuItem(text = { Text(it.label) }, onClick = { onSortChange(it); sortExpanded = false })
                 }
