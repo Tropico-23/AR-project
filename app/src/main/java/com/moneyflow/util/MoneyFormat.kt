@@ -1,6 +1,6 @@
-package com.moneyflow.util
+package com.tropico.moneyflow.util
 
-import com.moneyflow.model.AppCurrency
+import com.tropico.moneyflow.model.AppCurrency
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
