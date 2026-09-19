@@ -1,4 +1,4 @@
-package com.moneyflow.util
+package com.tropico.moneyflow.util
 
 import java.time.LocalDate
 import java.time.LocalDateTime
