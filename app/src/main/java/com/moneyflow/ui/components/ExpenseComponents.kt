@@ -1,4 +1,4 @@
-package com.moneyflow.ui.components
+package com.tropico.moneyflow.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -49,12 +49,12 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.moneyflow.model.AppCurrency
-import com.moneyflow.model.Expense
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.util.DateUtils
-import com.moneyflow.util.MoneyFormat
+import com.tropico.moneyflow.model.AppCurrency
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.util.DateUtils
+import com.tropico.moneyflow.util.MoneyFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
