@@ -5,6 +5,10 @@ import androidx.room.Room
 import com.tropico.moneyflow.data.database.MoneyFlowDatabase
 import com.tropico.moneyflow.data.preferences.PreferencesRepository
 import com.tropico.moneyflow.data.repository.ExpenseRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 class MoneyFlowApplication : Application() {
     lateinit var appContainer: AppContainer
