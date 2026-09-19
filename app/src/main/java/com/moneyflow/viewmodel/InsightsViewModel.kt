@@ -1,14 +1,14 @@
-package com.moneyflow.viewmodel
+package com.tropico.moneyflow.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moneyflow.data.preferences.AppPreferences
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
-import com.moneyflow.domain.ExpenseAnalytics
-import com.moneyflow.model.Expense
-import com.moneyflow.model.InsightStats
-import com.moneyflow.model.TrendRange
+import com.tropico.moneyflow.data.preferences.AppPreferences
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.domain.ExpenseAnalytics
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.InsightStats
+import com.tropico.moneyflow.model.TrendRange
 import java.time.LocalDate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -21,7 +21,7 @@ data class InsightsUiState(
     val loading: Boolean = true,
     val expenses: List<Expense> = emptyList(),
     val stats: InsightStats = InsightStats(),
-    val breakdown: List<Pair<com.moneyflow.model.ExpenseCategory, Long>> = emptyList(),
+    val breakdown: List<Pair<com.tropico.moneyflow.model.ExpenseCategory, Long>> = emptyList(),
     val trend: List<Pair<LocalDate, Long>> = emptyList(),
     val selectedRange: TrendRange = TrendRange.Days30,
     val preferences: AppPreferences = AppPreferences(),
