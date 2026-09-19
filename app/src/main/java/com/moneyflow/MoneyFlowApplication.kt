@@ -13,6 +13,9 @@ class MoneyFlowApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContainer = AppContainer(this)
+        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
+            appContainer.repository.migrateLegacySharedPreferences(this@MoneyFlowApplication)
+        }
     }
 }
 
@@ -21,7 +24,7 @@ class AppContainer(application: Application) {
         application,
         MoneyFlowDatabase::class.java,
         "moneyflow.db"
-    ).fallbackToDestructiveMigration().build()
+    ).build()
 
     val repository: ExpenseRepository = ExpenseRepository(db.expenseDao(), db.budgetDao())
     val preferencesRepository: PreferencesRepository = PreferencesRepository(application)
