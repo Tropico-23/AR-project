@@ -4,7 +4,9 @@ import java.time.DayOfWeek
 
 enum class ExpenseCategory(val label: String, val emoji: String) {
     Food("Food", "🍔"),
+    Coffee("Coffee", "☕"),
     Transport("Transport", "🚕"),
+    Subscriptions("Subscriptions", "🔁"),
     Shopping("Shopping", "🛍️"),
     Bills("Bills", "🧾"),
     Education("Education", "📚"),
