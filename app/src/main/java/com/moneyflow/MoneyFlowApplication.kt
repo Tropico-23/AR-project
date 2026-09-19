@@ -1,10 +1,10 @@
-package com.moneyflow
+package com.tropico.moneyflow
 
 import android.app.Application
 import androidx.room.Room
-import com.moneyflow.data.database.MoneyFlowDatabase
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.data.database.MoneyFlowDatabase
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
 
 class MoneyFlowApplication : Application() {
     lateinit var appContainer: AppContainer
