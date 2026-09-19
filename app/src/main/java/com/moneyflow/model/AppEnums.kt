@@ -15,7 +15,18 @@ enum class ExpenseCategory(val label: String, val emoji: String) {
     Other("Other", "✨");
 
     companion object {
-        fun fromValue(value: String): ExpenseCategory = entries.firstOrNull { it.name == value } ?: Other
+        fun fromValue(value: String): ExpenseCategory = when (value.trim().lowercase()) {
+            "study", "education" -> Education
+            "fun", "entertainment" -> Entertainment
+            "coffee" -> Coffee
+            "subscriptions", "subscription" -> Subscriptions
+            "food" -> Food
+            "transport" -> Transport
+            "shopping" -> Shopping
+            "bills" -> Bills
+            "health" -> Health
+            else -> Other
+        }
     }
 }
 
