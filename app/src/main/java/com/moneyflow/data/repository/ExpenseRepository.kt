@@ -22,7 +22,6 @@ import kotlin.math.roundToLong
 import java.time.LocalTime
 import java.time.ZoneId
 import android.content.Context
-import androidx.room.withTransaction
 import org.json.JSONArray
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -34,7 +33,6 @@ class ExpenseRepository(
     fun observeAllExpenses(): Flow<List<Expense>> = expenseDao.observeAll().map { it.map(ExpenseEntity::toModel) }
 
     suspend fun migrateLegacySharedPreferences(context: Context) {
-        val db = expenseDao.javaClass // migration is idempotent through the marker below
         val prefs = context.getSharedPreferences("moneyflow", Context.MODE_PRIVATE)
         if (prefs.getBoolean("room_legacy_migration_done", false)) return
 
@@ -67,7 +65,7 @@ class ExpenseRepository(
                 (budget * 100.0).roundToLong().coerceAtLeast(0L)
             )
         )
-        prefs.edit().putBoolean("room_legacy_migration_done", true).apply()
+        // Mark completion only after every legacy record and budget has been imported successfully.\n        prefs.edit().putBoolean("room_legacy_migration_done", true).apply()
     }
 
     fun observeRecentExpenses(limit: Int = 5): Flow<List<Expense>> =
