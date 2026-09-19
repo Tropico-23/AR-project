@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.clickable
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -51,6 +52,7 @@ fun SettingsScreen(
     onImportCsv: (android.net.Uri, ContentResolver) -> Unit
 ) {
     var clearDialog by remember { mutableStateOf(false) }
+    var showAbout by remember { mutableStateOf(false) }
     val createCsvLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri ->
         if (uri != null) onExportCsv(uri, contentResolver, allExpenses)
     }
@@ -91,7 +93,7 @@ fun SettingsScreen(
         }
 
         item {
-            Card {
+            Card(modifier = Modifier.clickable { showAbout = true }) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("About", style = MaterialTheme.typography.titleMedium)
                     Text("MoneyFlow")
@@ -104,6 +106,10 @@ fun SettingsScreen(
         state.message?.let { message ->
             item { Text(message) }
         }
+    }
+
+    if (showAbout) {
+        AlertDialog(onDismissRequest = { showAbout = false }, title = { Text("About MoneyFlow") }, text = { Text("Made by tropico me") }, confirmButton = { TextButton(onClick = { showAbout = false }) { Text("Close") } })
     }
 
     if (clearDialog) {
