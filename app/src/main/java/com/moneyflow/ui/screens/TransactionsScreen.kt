@@ -1,4 +1,4 @@
-package com.moneyflow.ui.screens
+package com.tropico.moneyflow.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,12 +24,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.model.SortOrder
-import com.moneyflow.ui.components.ExpenseRow
-import com.moneyflow.ui.components.TransactionDetailDialog
-import com.moneyflow.viewmodel.TransactionsUiState
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.SortOrder
+import com.tropico.moneyflow.ui.components.ExpenseRow
+import com.tropico.moneyflow.ui.components.TransactionDetailDialog
+import com.tropico.moneyflow.viewmodel.TransactionsUiState
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,10 +40,10 @@ fun TransactionsScreen(
     onCategoryChange: (ExpenseCategory?) -> Unit,
     onPaymentMethodChange: (PaymentMethod?) -> Unit,
     onSortChange: (SortOrder) -> Unit,
-    onSelectExpense: (com.moneyflow.model.Expense?) -> Unit,
-    onDeleteExpense: (com.moneyflow.model.Expense) -> Unit,
-    onEditExpense: (com.moneyflow.model.Expense) -> Unit,
-    onStartEdit: (com.moneyflow.model.Expense) -> Unit
+    onSelectExpense: (com.tropico.moneyflow.model.Expense?) -> Unit,
+    onDeleteExpense: (com.tropico.moneyflow.model.Expense) -> Unit,
+    onEditExpense: (com.tropico.moneyflow.model.Expense) -> Unit,
+    onStartEdit: (com.tropico.moneyflow.model.Expense) -> Unit
 ) {
     Column(Modifier.fillMaxSize()) {
         OutlinedTextField(
