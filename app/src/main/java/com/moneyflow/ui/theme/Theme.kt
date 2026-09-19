@@ -1,11 +1,11 @@
-package com.moneyflow.ui.theme
+package com.tropico.moneyflow.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import com.moneyflow.model.ThemeMode
+import com.tropico.moneyflow.model.ThemeMode
 
 private val LightColors = lightColorScheme(
     primary = Primary,
