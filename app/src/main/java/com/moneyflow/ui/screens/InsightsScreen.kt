@@ -1,4 +1,4 @@
-package com.moneyflow.ui.screens
+package com.tropico.moneyflow.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,11 +13,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moneyflow.model.TrendRange
-import com.moneyflow.ui.components.DonutChart
-import com.moneyflow.ui.components.TrendLineChart
-import com.moneyflow.util.MoneyFormat
-import com.moneyflow.viewmodel.InsightsUiState
+import com.tropico.moneyflow.model.TrendRange
+import com.tropico.moneyflow.ui.components.DonutChart
+import com.tropico.moneyflow.ui.components.TrendLineChart
+import com.tropico.moneyflow.util.MoneyFormat
+import com.tropico.moneyflow.viewmodel.InsightsUiState
 
 @Composable
 fun InsightsScreen(state: InsightsUiState, onRangeChanged: (TrendRange) -> Unit) {
