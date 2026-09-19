@@ -24,6 +24,7 @@ data class HomeUiState(
     val error: String? = null,
     val expenses: List<Expense> = emptyList(),
     val recentExpenses: List<Expense> = emptyList(),
+    val todayExpenses: List<Expense> = emptyList(),
     val summary: DashboardSummary = DashboardSummary(),
     val preferences: AppPreferences = AppPreferences()
 )
@@ -48,6 +49,7 @@ class HomeViewModel(
             error = error,
             expenses = expenses,
             recentExpenses = recent,
+            todayExpenses = expenses.filter { it.date == LocalDate.now() },
             summary = summary,
             preferences = prefs
         )
