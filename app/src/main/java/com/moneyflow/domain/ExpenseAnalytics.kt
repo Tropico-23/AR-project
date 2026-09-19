@@ -1,10 +1,10 @@
-package com.moneyflow.domain
+package com.tropico.moneyflow.domain
 
-import com.moneyflow.model.DashboardSummary
-import com.moneyflow.model.Expense
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.model.InsightStats
-import com.moneyflow.model.TrendRange
+import com.tropico.moneyflow.model.DashboardSummary
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.model.InsightStats
+import com.tropico.moneyflow.model.TrendRange
 import java.time.LocalDate
 import java.time.YearMonth
 import kotlin.math.roundToLong
