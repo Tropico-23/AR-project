@@ -1,4 +1,4 @@
-package com.moneyflow.data.dao
+package com.tropico.moneyflow.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.moneyflow.data.entity.ExpenseEntity
+import com.tropico.moneyflow.data.entity.ExpenseEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
