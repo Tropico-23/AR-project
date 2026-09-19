@@ -1,14 +1,14 @@
-package com.moneyflow.viewmodel
+package com.tropico.moneyflow.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.moneyflow.data.preferences.AppPreferences
-import com.moneyflow.data.preferences.PreferencesRepository
-import com.moneyflow.data.repository.ExpenseRepository
-import com.moneyflow.model.Expense
-import com.moneyflow.model.ExpenseCategory
-import com.moneyflow.model.PaymentMethod
-import com.moneyflow.model.SortOrder
+import com.tropico.moneyflow.data.preferences.AppPreferences
+import com.tropico.moneyflow.data.preferences.PreferencesRepository
+import com.tropico.moneyflow.data.repository.ExpenseRepository
+import com.tropico.moneyflow.model.Expense
+import com.tropico.moneyflow.model.ExpenseCategory
+import com.tropico.moneyflow.model.PaymentMethod
+import com.tropico.moneyflow.model.SortOrder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
