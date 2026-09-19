@@ -24,6 +24,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -68,11 +69,11 @@ fun MoneyFlowApp() {
     val budgetViewModel: BudgetViewModel = viewModel(factory = factory)
     val settingsViewModel: SettingsViewModel = viewModel(factory = factory)
 
-    val homeState by homeViewModel.uiState
-    val txState by transactionsViewModel.uiState
-    val insightsState by insightsViewModel.uiState
-    val budgetState by budgetViewModel.uiState
-    val settingsState by settingsViewModel.uiState
+    val homeState by homeViewModel.uiState.collectAsState()
+    val txState by transactionsViewModel.uiState.collectAsState()
+    val insightsState by insightsViewModel.uiState.collectAsState()
+    val budgetState by budgetViewModel.uiState.collectAsState()
+    val settingsState by settingsViewModel.uiState.collectAsState()
 
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
