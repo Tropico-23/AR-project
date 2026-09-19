@@ -1,4 +1,4 @@
-package com.moneyflow.ui.screens
+package com.tropico.moneyflow.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,11 +14,11 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.moneyflow.domain.ExpenseAnalytics
-import com.moneyflow.ui.components.BudgetProgressCard
-import com.moneyflow.ui.components.ExpenseRow
-import com.moneyflow.ui.components.Last7DaysBarChart
-import com.moneyflow.viewmodel.HomeUiState
+import com.tropico.moneyflow.domain.ExpenseAnalytics
+import com.tropico.moneyflow.ui.components.BudgetProgressCard
+import com.tropico.moneyflow.ui.components.ExpenseRow
+import com.tropico.moneyflow.ui.components.Last7DaysBarChart
+import com.tropico.moneyflow.viewmodel.HomeUiState
 import java.time.LocalDate
 
 @Composable
@@ -59,20 +59,20 @@ fun HomeScreen(
             Card(modifier = Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("Quick stats", style = MaterialTheme.typography.titleMedium)
-                    Text("Today: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}")
-                    Text("This week: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.weekSpent, state.preferences.currency)}")
-                    Text("This month: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.monthSpent, state.preferences.currency)}")
-                    Text("Average daily: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.averageDaily, state.preferences.currency)}")
+                    Text("Today: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}")
+                    Text("This week: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.weekSpent, state.preferences.currency)}")
+                    Text("This month: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.monthSpent, state.preferences.currency)}")
+                    Text("Average daily: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.averageDaily, state.preferences.currency)}")
                 }
             }
         }
         item {
-            Last7DaysBarChart(ExpenseAnalytics.trend(state.expenses, LocalDate.now(), com.moneyflow.model.TrendRange.Days7))
+            Last7DaysBarChart(ExpenseAnalytics.trend(state.expenses, LocalDate.now(), com.tropico.moneyflow.model.TrendRange.Days7))
         }
         item {
             Text("Today’s Expenses", style = MaterialTheme.typography.titleLarge)
         }
-        Text("Today: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}", style = MaterialTheme.typography.headlineSmall)
+        Text("Today: ${com.tropico.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}", style = MaterialTheme.typography.headlineSmall)
         if (state.todayExpenses.isEmpty()) {
             item {
                 Card(modifier = Modifier.fillMaxWidth()) {
