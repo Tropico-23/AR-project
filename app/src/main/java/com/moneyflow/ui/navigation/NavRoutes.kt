@@ -1,4 +1,4 @@
-package com.moneyflow.ui.navigation
+package com.tropico.moneyflow.ui.navigation
 
 sealed class NavRoutes(val route: String, val label: String) {
     data object Home : NavRoutes("home", "Home")
