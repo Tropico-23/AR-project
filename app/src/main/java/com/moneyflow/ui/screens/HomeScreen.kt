@@ -70,9 +70,10 @@ fun HomeScreen(
             Last7DaysBarChart(ExpenseAnalytics.trend(state.expenses, LocalDate.now(), com.moneyflow.model.TrendRange.Days7))
         }
         item {
-            Text("Recent transactions", style = MaterialTheme.typography.titleLarge)
+            Text("Today’s Expenses", style = MaterialTheme.typography.titleLarge)
         }
-        if (state.recentExpenses.isEmpty()) {
+        Text("Today: ${com.moneyflow.util.MoneyFormat.formatMinor(state.summary.todaySpent, state.preferences.currency)}", style = MaterialTheme.typography.headlineSmall)
+        if (state.todayExpenses.isEmpty()) {
             item {
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -82,10 +83,10 @@ fun HomeScreen(
                 }
             }
         } else {
-            items(state.recentExpenses, key = { it.id }) { expense ->
+            items(state.todayExpenses, key = { it.id }) { expense ->
                 ExpenseRow(expense = expense, currency = state.preferences.currency)
             }
-            item { TextButton(onClick = onSeeAll) { Text("See all") } }
+            item { TextButton(onClick = onSeeAll) { Text("View all expenses") } }
         }
     }
 }
