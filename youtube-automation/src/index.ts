@@ -81,12 +81,20 @@ function base64Url(bytes: Uint8Array): string {
     .replace(/=+$/g, "");
 }
 
+// Keep Web Crypto inputs typed as ArrayBuffer rather than ArrayBufferLike.
+// Newer TypeScript lib definitions distinguish SharedArrayBuffer from ArrayBuffer.
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(bytes.byteLength);
+  copy.set(bytes);
+  return copy.buffer;
+}
+
 async function importEncryptionKey(env: Env): Promise<CryptoKey> {
   const raw = base64ToBytes(env.TOKEN_ENCRYPTION_KEY);
   if (raw.byteLength !== 32) {
     throw new Error("TOKEN_ENCRYPTION_KEY must decode to exactly 32 bytes.");
   }
-  return crypto.subtle.importKey("raw", raw, "AES-GCM", false, [
+  return crypto.subtle.importKey("raw", toArrayBuffer(raw), "AES-GCM", false, [
     "encrypt",
     "decrypt"
   ]);
@@ -99,9 +107,9 @@ async function encryptSecret(
   const key = await importEncryptionKey(env);
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const encrypted = await crypto.subtle.encrypt(
-    { name: "AES-GCM", iv },
+    { name: "AES-GCM", iv: toArrayBuffer(iv) },
     key,
-    new TextEncoder().encode(plaintext)
+    toArrayBuffer(new TextEncoder().encode(plaintext))
   );
 
   return {
@@ -117,9 +125,9 @@ async function decryptSecret(
 ): Promise<string> {
   const key = await importEncryptionKey(env);
   const decrypted = await crypto.subtle.decrypt(
-    { name: "AES-GCM", iv: base64ToBytes(ivBase64) },
+    { name: "AES-GCM", iv: toArrayBuffer(base64ToBytes(ivBase64)) },
     key,
-    base64ToBytes(ciphertextBase64)
+    toArrayBuffer(base64ToBytes(ciphertextBase64))
   );
   return new TextDecoder().decode(decrypted);
 }
